@@ -10,7 +10,8 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        'images/v1.mp4'
+        '/arunkumarms.com/stylesheets/normalize.css',
+        '/arunkumarms.com/stylesheets/github-light.css'
       ]);
     })
   );
