@@ -10,7 +10,7 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v3').then(function(cache) {
       return cache.addAll([
-        '/arunkumarms.com/stylesheets/normalize.css'
+        '/arunkumarms.com/stylesheets/'
       ]);
     })
   );
