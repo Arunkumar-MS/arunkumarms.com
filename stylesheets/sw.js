@@ -1,6 +1,7 @@
 
 
 var urlsToCache = [
+        '/arunkumarms.com/stylesheets/',
         '/arunkumarms.com/stylesheets/stylesheet.css',
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
