@@ -12,7 +12,7 @@ this.addEventListener('install', function(event) {
       return cache.addAll([
         '/arunkumarms.com/stylesheets/stylesheet.css',
         '/arunkumarms.com/stylesheets/github-light.css',
-        '/arunkumarms.com/stylesheets/normalize.cs'
+        '/arunkumarms.com/stylesheets/normalize.css'
         
       ]);
     })
