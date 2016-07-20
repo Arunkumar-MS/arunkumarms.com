@@ -1,6 +1,8 @@
 * {
   box-sizing: border-box; }
-// tegsdmasdadv
+.btn{
+  border: 1px solid black;
+}
 body {
   padding: 0;
   margin: 0;
