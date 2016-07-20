@@ -8,10 +8,9 @@ if ('serviceWorker' in navigator) {
 
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v1').then(function(cache) {
+    caches.open('v2').then(function(cache) {
       return cache.addAll([
-        '/arunkumarms.com/stylesheets/normalize.css',
-        '/arunkumarms.com/stylesheets/github-light.css'
+        '/'
       ]);
     })
   );
@@ -33,7 +32,7 @@ this.addEventListener('fetch', function(event) {
 });
 
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['arun-v1'];
+  var cacheWhitelist = ['v1'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
