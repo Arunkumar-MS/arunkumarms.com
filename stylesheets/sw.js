@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/arunkumarms.com/stylesheets/sw.js').then(function(reg) {
+  navigator.serviceWorker.register('/arunkumarms.com/stylesheets/sw.js', { scope: '/arunkumarms.com/' }).then(function(reg) {
     console.log('◕‿◕', reg);
   }, function(err) {
     console.log('ಠ_ಠ', err);
