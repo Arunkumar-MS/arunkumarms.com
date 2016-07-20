@@ -3,11 +3,11 @@ var urlsToCache = [
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
 ];
-var CACHE_NAME = 'my-site-cache-v5';
+var CURRENT_CACHES = 'my-site-cache-v6';
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches.open(CURRENT_CACHES)
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
@@ -69,17 +69,26 @@ self.addEventListener('fetch', function(event) {
       })
     );
 });
+self.addEventListener('activate', event => {
+  // Delete all caches that aren't named in CURRENT_CACHES.
+  // While there is only one cache in this example, the same logic will handle the case where
+  // there are multiple versioned caches.
+  let expectedCacheNames = Object.keys(CURRENT_CACHES).map(function(key) {
+    return CURRENT_CACHES[key];
+  });
 
-this.addEventListener('activate', function(event) {
-  
   event.waitUntil(
-    caches.keys().then(function(keyList) {
-            console.log(keyList);
-      return Promise.all(keyList.map(function(key) {
-        if (CACHE_NAME.indexOf(key) === -1) {
-          return caches.delete(key);
-        }
-      }));
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (expectedCacheNames.indexOf(cacheName) === -1) {
+            // If this cache name isn't present in the array of "expected" cache names,
+            // then delete it.
+            console.log('Deleting out of date cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
