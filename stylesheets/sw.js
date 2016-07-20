@@ -14,7 +14,7 @@ var urlsToCache = [
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
 ];
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'my-site-cache-v2';
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
@@ -27,6 +27,9 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+    console.log(event.request);
+     console.log(event.request.url);
+     console.log(caches);
   event.respondWith(
     caches.match(event.request)
       .then(function(response) {
