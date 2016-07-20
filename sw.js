@@ -3,7 +3,7 @@ var urlsToCache = [
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
 ];
-var CACHE_NAME = 'my-site-cache-v2';
+var CACHE_NAME = 'my-site-cache-v1';
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
@@ -71,7 +71,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v4'];
+  var cacheWhitelist = ['my-site-cache-v2'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
