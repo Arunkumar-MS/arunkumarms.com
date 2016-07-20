@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/arunkumarms.com/stylesheets/sw.js').then(function(reg) {
+  navigator.serviceWorker.register('/arunkumarms.com/stylesheets/sw.js',{scope:'/arunkumarms.com/stylesheets/'}).then(function(reg) {
     console.log('◕‿◕', reg);
   }, function(err) {
     console.log('ಠ_ಠ', err);
@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v3').then(function(cache) {
+    caches.open('v4').then(function(cache) {
       return cache.addAll([
         '/arunkumarms.com/stylesheets/stylesheet.css',
         '/arunkumarms.com/stylesheets/github-light.css',
@@ -23,7 +23,7 @@ this.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
-        return caches.open('v3').then(function(cache) {
+        return caches.open('v4').then(function(cache) {
           console.log(event.request);
           cache.put(event.request, response.clone());
           return response;
@@ -34,7 +34,7 @@ this.addEventListener('fetch', function(event) {
 });
 
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v2'];
+  var cacheWhitelist = ['v3'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
