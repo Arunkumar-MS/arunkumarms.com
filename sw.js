@@ -3,7 +3,7 @@ var urlsToCache = [
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
 ];
-var CACHE_NAME = 'my-site-cache-v2';
+var CACHE_NAME = 'my-site-cache-v3';
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
