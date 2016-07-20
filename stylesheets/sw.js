@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
 
 this.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open('v2').then(function(cache) {
+    caches.open('v3').then(function(cache) {
       return cache.addAll([
         '/'
       ]);
@@ -17,22 +17,20 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  var response;
-  event.respondWith(caches.match(event.request).catch(function() {
-    return fetch(event.request);
-  }).then(function(r) {
-    response = r;
-    caches.open('v1').then(function(cache) {
-      cache.put(event.request, response);
-    });
-    return response.clone();
-  }).catch(function() {
-    return caches.match('/sw-test/gallery/myLittleVader.jpg');
-  }));
+  event.respondWith(
+    caches.match(event.request).then(function(resp) {
+      return resp || fetch(event.request).then(function(response) {
+        return caches.open('v3').then(function(cache) {
+          cache.put(event.request, response.clone());
+          return response;
+        });  
+      });
+    })
+  );
 });
 
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v1'];
+  var cacheWhitelist = ['v2'];
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
