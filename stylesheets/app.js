@@ -1,9 +1,17 @@
+
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/arunkumarms.com/stylesheets/sw.js',{scope:'/arunkumarms.com/stylesheets/'}).then(function(registration) {
-    // Registration was successful
-    console.log('ServiceWorker registration successful with scope: ',    registration.scope);
-  }).catch(function(err) {
-    // registration failed :(
-    console.log('ServiceWorker registration failed: ', err);
+  navigator.serviceWorker.register('/arunkumarms.com/sw.js', { scope: '/arunkumarms.com/' }).then(function(reg) {
+    
+    if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }
+    
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
   });
-}
+};
