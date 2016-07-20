@@ -10,9 +10,9 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v3').then(function(cache) {
       return cache.addAll([
-        '//arunkumarms.com/stylesheets/stylesheet.css',
-        '//arunkumarms.com/stylesheets/github-light.css',
-        '//arunkumarms.com/stylesheets/normalize.cs'
+        '/arunkumarms.com/stylesheets/stylesheet.css',
+        '/arunkumarms.com/stylesheets/github-light.css',
+        '/arunkumarms.com/stylesheets/normalize.cs'
         
       ]);
     })
