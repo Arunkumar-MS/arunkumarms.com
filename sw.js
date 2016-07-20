@@ -3,11 +3,14 @@ var urlsToCache = [
         '/arunkumarms.com/stylesheets/github-light.css',
         '/arunkumarms.com/stylesheets/normalize.css'
 ];
-var CURRENT_CACHES = 'my-site-cache-v6';
+const CACHE_VERSION = 1;
+let CURRENT_CACHES = {
+  assets: 'my-v' + CACHE_VERSION
+};
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
-    caches.open(CURRENT_CACHES)
+    caches.open(CURRENT_CACHES.assets)
       .then(function(cache) {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
