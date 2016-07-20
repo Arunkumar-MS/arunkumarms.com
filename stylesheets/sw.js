@@ -10,7 +10,10 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v3').then(function(cache) {
       return cache.addAll([
-        '/arunkumarms.com/stylesheets/stylesheet.css'
+        '//arunkumarms.com/stylesheets/stylesheet.css',
+        '//arunkumarms.com/stylesheets/github-light.css',
+        '//arunkumarms.com/stylesheets/normalize.cs'
+        
       ]);
     })
   );
@@ -21,6 +24,7 @@ this.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(resp) {
       return resp || fetch(event.request).then(function(response) {
         return caches.open('v3').then(function(cache) {
+          console.log(event.request);
           cache.put(event.request, response.clone());
           return response;
         });  
