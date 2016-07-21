@@ -1,5 +1,5 @@
 var urlsToCache = [
-  '/arunkumarms.com/index.html'
+  '/arunkumarms.com/index.html',
   '/arunkumarms.com/stylesheets/stylesheet.css',
   '/arunkumarms.com/stylesheets/github-light.css',
   '/arunkumarms.com/stylesheets/normalize.css'
