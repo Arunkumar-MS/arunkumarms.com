@@ -1,10 +1,12 @@
+\\welcome.[a-z0-9]*.sdfsdf.js
+
 var urlsToCache = [
   '/arunkumarms.com/index.html',
   '/arunkumarms.com/stylesheets/stylesheet.css',
   '/arunkumarms.com/stylesheets/github-light.css',
   '/arunkumarms.com/stylesheets/normalize.css'
 ];
-const CACHE_VERSION = 1;
+const CACHE_VERSION = 2;
 let CURRENT_CACHES = {
   assets: 'my-v' + CACHE_VERSION
 };
@@ -35,7 +37,7 @@ self.addEventListener('fetch', event => {
             }
             var responseToCache = response.clone();
 
-            caches.open(URRENT_CACHES.assets)
+            caches.open(CURRENT_CACHES.assets)
               .then(cache => {
                 cache.put(event.request, responseToCache);
               });
