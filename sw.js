@@ -6,7 +6,7 @@ var urlsToCache = [
   '/arunkumarms.com/stylesheets/github-light.css',
   '/arunkumarms.com/stylesheets/normalize.css'
 ];
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 3;
 let CURRENT_CACHES = {
   assets: 'my-v' + CACHE_VERSION
 };
@@ -25,6 +25,8 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
+        console.log(event.request.url);
+         console.log(response);
         if (response) {
           return response;
         }
