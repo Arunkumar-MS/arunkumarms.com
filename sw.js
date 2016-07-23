@@ -4,7 +4,7 @@ var urlsToCache = [
   '/arunkumarms.com/stylesheets/github-light.css',
   '/arunkumarms.com/stylesheets/normalize.css'
 ];
-const CACHE_VERSION = 7;
+const CACHE_VERSION = 8;
 let CURRENT_CACHES = {
   assets: 'my-v' + CACHE_VERSION
 };
