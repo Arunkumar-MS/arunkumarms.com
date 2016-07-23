@@ -1,5 +1,7 @@
+
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/arunkumarms.com/sw.js', { scope: '/arunkumarms.com/stylesheets/' }).then(function(reg) {
+  let sw = '/arunkumarms.com/sw.js?q'+Math.random();
+  navigator.serviceWorker.register(sw , { scope: '/arunkumarms.com/stylesheets/' }).then(function(reg) {
     
     if(reg.installing) {
       console.log('Service worker installing');
