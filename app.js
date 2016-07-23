@@ -1,6 +1,6 @@
 
 if ('serviceWorker' in navigator) {
-  let sw = '/arunkumarms.com/sw.js?'+Math.random();
+  let sw = '/arunkumarms.com/sw.js';
   navigator.serviceWorker.register(sw , { scope: '/arunkumarms.com/stylesheets/' }).then(function(reg) {
     
     if(reg.installing) {
