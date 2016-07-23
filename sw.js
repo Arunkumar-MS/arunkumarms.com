@@ -1,4 +1,4 @@
-\\welcome.[a-z0-9]*.sdfsdf.js
+
 
 var urlsToCache = [
   '/arunkumarms.com/index.html',
