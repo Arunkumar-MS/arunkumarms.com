@@ -4,7 +4,7 @@ var urlsToCache = [
   '/arunkumarms.com/stylesheets/github-light.css',
   '/arunkumarms.com/stylesheets/normalize.css'
 ];
-const CACHE_VERSION = 5;
+const CACHE_VERSION = 6;
 let CURRENT_CACHES = {
   assets: 'my-v' + CACHE_VERSION
 };
@@ -13,7 +13,7 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CURRENT_CACHES.assets)
       .then(cache => {
-        console.log('Opened cache');
+        console.log('Opened cache',caches);
         return cache.addAll(urlsToCache);
       })
   );
@@ -58,6 +58,8 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
+           console.log('Deleting out of date cache:', cacheName);
+            console.log('expectedCacheNames cache:', expectedCacheNames);
           if (expectedCacheNames.indexOf(cacheName) === -1) {
             // If this cache name isn't present in the array of "expected" cache names,
             // then delete it.
