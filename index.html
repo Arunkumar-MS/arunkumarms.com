@@ -2,7 +2,10 @@
 <html lang="en">
 
 <head>
+    <script src='./sw.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.3.5/pixi.min.js'></script>
+    <!-- <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script> -->
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js'></script> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
@@ -20,16 +23,31 @@
             top: 0;
             left: 0;
         }
-        .App { 
-    position: relative;
-    z-index: 1;
-    color: white;
-}
+
+        .App {
+            position: relative;
+            z-index: 1;
+            color: white;
+            font-family: monospace;
+        }
+
+        .highlight {
+            color: #e31b6d;
+        }
+
+        .App__welcome {
+            top: 47vh;
+            position: relative;
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            display: block;
+        }
     </style>
 </head>
 
 <body>
     <div id="output"></div>
-</body>
+<script src="bundle.js"></script></body>
 
 </html>
